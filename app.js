@@ -14,3 +14,28 @@
  * limitations under the License.
  */
 
+const cors = require("cors")
+const path = require("path")
+const helmet = require("helmet")
+const express = require("express")
+const e = require("express");
+
+// Allows access to the .env file
+require("dotenv").config()
+
+const PORT = process.env.PORT || 8000
+const app = express()
+
+app.use(cors())
+app.use(helmet())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(express.static(path.join(__dirname, "public")))
+
+app.get("/", (req, res) => {
+    res.send("./index.html")
+})
+
+app.listen(PORT, () => {
+    console.log(`Listening on Port: ${PORT}`)
+})
