@@ -18,7 +18,6 @@ const cors = require("cors")
 const path = require("path")
 const helmet = require("helmet")
 const express = require("express")
-const e = require("express");
 
 // Allows access to the .env file
 require("dotenv").config()
